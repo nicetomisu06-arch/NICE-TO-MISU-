@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nice to Misu — Tiramisu & Juice · Nice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:     #F5F0E8;
+      --cream-dark:#EDE5D0;
+      --brown:     #3B1F0A;
+      --brown-mid: #6B3A1F;
+      --caramel:   #C47A3A;
+      --cocoa:     #8B5E3C;
+      --gold:      #D4A853;
+      --green:     #3A7D44;
+      --white:     #FFFDF8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--brown) 0%, var(--brown-mid) 55%, var(--cocoa) 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-text {
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,168,83,0.15);
+      border: 1px solid rgba(212,168,83,0.4);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before {
+      content: '★';
+      font-size: 10px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.75);
+      max-width: 420px;
+      margin-bottom: 48px;
+    }
+
+    .hero-desc strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--brown);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(212,168,83,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212,168,83,0.5);
+    }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 80px 80px 20px;
+      z-index: 2;
+    }
+
+    .jar-wrapper {
+      position: relative;
+    }
+
+    .jar-glow {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,83,0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .jar-svg {
+      width: 280px;
+      height: 380px;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── TAGLINE STRIP ── */
+    .strip {
+      background: var(--gold);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+
+    .strip-inner {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+    }
+
+    .strip-item {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--brown);
+      padding: 0 40px;
+    }
+
+    .strip-item::before {
+      content: '✦';
+      margin-right: 40px;
+      opacity: 0.5;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION: HISTOIRE ── */
+    .section {
+      padding: 120px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--brown);
+      margin-bottom: 28px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--caramel);
+    }
+
+    .section-body {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--brown-mid);
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT GRID ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 8px 48px rgba(59,31,10,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle at top right, rgba(212,168,83,0.15), transparent);
+    }
+
+    .big-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 100px;
+      line-height: 0.7;
+      color: var(--cream-dark);
+      font-weight: 900;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+
+    .quote-author {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--caramel);
+    }
+
+    .badge-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 16px 20px;
+    }
+
+    .badge-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .badge-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+
+    .badge-text span {
+      font-size: 12px;
+      color: var(--cocoa);
+      font-weight: 400;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-section {
+      background: var(--brown);
+      padding: 120px 80px;
+    }
+
+    .products-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .products-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .products-header .section-label { color: var(--gold); }
+
+    .products-header .section-title {
+      color: var(--white);
+    }
+
+    .products-header .section-title em {
+      color: var(--gold);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px 32px;
+      transition: transform 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .product-card.featured {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .product-card.featured .product-name,
+    .product-card.featured .product-desc,
+    .product-card.featured .product-tag {
+      color: var(--brown) !important;
+    }
+
+    .product-card.featured .product-tag {
+      background: rgba(59,31,10,0.12);
+    }
+
+    .product-emoji {
+      font-size: 48px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .product-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(212,168,83,0.12);
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+    }
+
+    /* ── VALUES ── */
+    .values-section {
+      background: var(--cream-dark);
+      padding: 120px 80px;
+    }
+
+    .values-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+
+    .value-item {
+      text-align: center;
+    }
+
+    .value-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--caramel);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .value-unit {
+      font-size: 18px;
+      vertical-align: super;
+    }
+
+    .value-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+    }
+
+    /* ── INGREDIENTS ── */
+    .ingredients-section {
+      padding: 120px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 64px;
+    }
+
+    .ingredient-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .ingredient-item:last-child { border-bottom: none; }
+
+    .ingredient-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .ingredient-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--brown);
+      flex: 1;
+    }
+
+    .ingredient-origin {
+      font-size: 12px;
+      color: var(--cocoa);
+      font-style: italic;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 24px;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--brown);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-content strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--cocoa);
+      font-weight: 300;
+    }
+
+    /* ── CTA FINALE ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--brown) 0%, #1a0a00 100%);
+      padding: 120px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,83,0.12) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-inner .section-label { color: var(--gold); }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-body {
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0F0500;
+      padding: 56px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 16px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 80px 40px 40px; }
+      .hero-visual { padding: 40px; }
+      .about-grid,
+      .ingredients-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .section,
+      .products-section,
+      .values-section,
+      .cta-section { padding: 80px 40px; }
+      .footer { padding: 48px 40px; }
+      .ingredients-section { padding: 80px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">Fait à Nice · Côte d'Azur</div>
+      <h1 class="hero-title">
+        Nice<br>
+        to<br>
+        <em>Misu</em>
+      </h1>
+      <p class="hero-subtitle">Tiramisu & Juice</p>
+      <p class="hero-desc">
+        Le tiramisu comme vous ne l'avez jamais goûté.<br>
+        <strong>Fait maison</strong>, servi en pot, dégusté à Nice —
+        l'Italie rencontre la Côte d'Azur dans chaque cuillère.
+      </p>
+      <div class="hero-cta">
+        <a href="#commander" class="btn-primary">Commander maintenant</a>
+        <a href="#produits" class="btn-outline">Voir la carte</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="jar-wrapper">
+        <div class="jar-glow"></div>
+        <!-- Jar SVG illustration -->
+        <svg class="jar-svg" viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Lid -->
+          <rect x="60" y="18" width="160" height="22" rx="4" fill="#8B7355"/>
+          <rect x="55" y="32" width="170" height="14" rx="3" fill="#9B8365"/>
+
+          <!-- Glass body -->
+          <rect x="52" y="44" width="176" height="290" rx="20" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+
+          <!-- Cocoa layer (top) -->
+          <rect x="54" y="44" width="172" height="52" rx="20" fill="#3B1F0A" opacity="0.85"/>
+
+          <!-- Cream layer 1 -->
+          <rect x="54" y="88" width="172" height="68" fill="#F5EDD8"/>
+
+          <!-- Biscuit layer -->
+          <rect x="54" y="148" width="172" height="40" fill="#C4935A"/>
+          <!-- Biscuit texture -->
+          <rect x="70" y="155" width="140" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="70" y="167" width="120" height="5" rx="2" fill="rgba(255,255,255,0.1)"/>
+
+          <!-- Cream layer 2 -->
+          <rect x="54" y="184" width="172" height="80" fill="#EDE5D0"/>
+
+          <!-- Coffee layer -->
+          <rect x="54" y="258" width="172" height="50" fill="#6B3A1F" opacity="0.9"/>
+
+          <!-- Bottom cream -->
+          <rect x="54" y="300" width="172" height="34" rx="0" fill="#D4C4A0"/>
+          <rect x="54" y="316" width="172" height="18" rx="0" style="rx:0 0 20px 20px" fill="#C4B490"/>
+
+          <!-- Glass shine -->
+          <rect x="72" y="54" width="16" height="200" rx="8" fill="rgba(255,255,255,0.12)"/>
+          <rect x="95" y="54" width="6" height="160" rx="3" fill="rgba(255,255,255,0.07)"/>
+
+          <!-- Logo on glass -->
+          <text x="140" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="rgba(59,31,10,0.8)">Nice to misu</text>
+          <text x="140" y="164" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="rgba(59,31,10,0.6)" letter-spacing="1">TIRAMISU &amp; JUICE</text>
+
+          <!-- Cocoa dust decoration -->
+          <circle cx="100" cy="66" r="3" fill="#6B3A1F" opacity="0.5"/>
+          <circle cx="130" cy="58" r="2" fill="#6B3A1F" opacity="0.4"/>
+          <circle cx="168" cy="72" r="2.5" fill="#6B3A1F" opacity="0.5"/>
+          <circle cx="145" cy="60" r="1.5" fill="#6B3A1F" opacity="0.35"/>
+          <circle cx="185" cy="62" r="2" fill="#6B3A1F" opacity="0.4"/>
+
+          <!-- Bottom rim -->
+          <rect x="52" y="324" width="176" height="10" rx="0" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Découvrir
+    </div>
+  </section>
+
+  <!-- ══════════════ STRIP ══════════════ -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-inner">
+      <span class="strip-item">Tiramisu Maison</span>
+      <span class="strip-item">Fait avec Amour</span>
+      <span class="strip-item">Basé à Nice</span>
+      <span class="strip-item">Ingrédients Frais</span>
+      <span class="strip-item">Recette Artisanale</span>
+      <span class="strip-item">Côte d'Azur</span>
+      <span class="strip-item">Tiramisu Maison</span>
+      <span class="strip-item">Fait avec Amour</span>
+      <span class="strip-item">Basé à Nice</span>
+      <span class="strip-item">Ingrédients Frais</span>
+      <span class="strip-item">Recette Artisanale</span>
+      <span class="strip-item">Côte d'Azur</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ HISTOIRE ══════════════ -->
+  <section id="histoire">
+    <div class="section">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-card">
+            <span class="big-quote">"</span>
+            <p class="quote-text">
+              La douceur d'un tiramisu fait maison,<br>
+              la chaleur du soleil niçois —<br>
+              c'est tout ça, <em style="color:var(--caramel)">Nice to Misu</em>.
+            </p>
+            <p class="quote-author">— L'équipe Nice to Misu, Nice</p>
+
+            <div class="badge-stack">
+              <div class="badge">
+                <div class="badge-icon">🍃</div>
+                <div class="badge-text">
+                  <strong>100 % Frais</strong>
+                  <span>Préparé chaque jour sans conservateurs</span>
+                </div>
+              </div>
+              <div class="badge">
+                <div class="badge-icon">☕</div>
+                <div class="badge-text">
+                  <strong>Café d'exception</strong>
+                  <span>Espresso fort et sélectionné avec soin</span>
+                </div>
+              </div>
+              <div class="badge">
+                <div class="badge-icon">📍</div>
+                <div class="badge-text">
+                  <strong>Ancré à Nice</strong>
+                  <span>Livraison locale sur la Côte d'Azur</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <p class="section-label">Notre histoire</p>
+          <h2 class="section-title">
+            Là où l'Italie<br>
+            rencontre la <em>Riviera</em>
+          </h2>
+          <p class="section-body">
+            Nice to Misu est née d'une passion simple :
+            offrir un tiramisu authentique, préparé avec amour et
+            des ingrédients de qualité, directement depuis notre cuisine
+            jusqu'à vos mains.
+          </p>
+          <br>
+          <p class="section-body">
+            Servi dans son élégant pot en verre, chaque tiramisu
+            est une petite œuvre — des couches de mascarpone onctueux,
+            de biscuits imbibés d'espresso et de cacao soigneusement dosé.
+            Un jeu de mots, un jeu de saveurs : <em style="color:var(--caramel); font-style:italic">Nice to meet you… Nice to Misu.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PRODUITS ══════════════ -->
+  <section id="produits" class="products-section">
+    <div class="products-inner">
+      <div class="products-header">
+        <p class="section-label">Notre carte</p>
+        <h2 class="section-title">
+          Le plaisir dans<br>
+          <em>chaque pot</em>
+        </h2>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card">
+          <span class="product-emoji">☕</span>
+          <span class="product-tag">Signature</span>
+          <h3 class="product-name">Tiramisu Classique</h3>
+          <p class="product-desc">
+            Notre recette originale — mascarpone soyeux,
+            espresso intense, biscuits moelleux et cacao de Madagascar.
+            La référence.
+          </p>
+        </div>
+
+        <div class="product-card featured">
+          <span class="product-emoji">🌟</span>
+          <span class="product-tag">Best-seller</span>
+          <h3 class="product-name">Tiramisu Spéculoos</h3>
+          <p class="product-desc">
+            Une variation gourmande avec des éclats de spéculoos
+            caramélisés pour une touche de croquant inattendu
+            dans chaque cuillère.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <span class="product-emoji">🍓</span>
+          <span class="product-tag">Fruité</span>
+          <h3 class="product-name">Tiramisu Fruits Rouges</h3>
+          <p class="product-desc">
+            La fraîcheur des fruits rouges rencontre la douceur
+            du mascarpone — une version estivale et acidulée
+            inspirée par la Méditerranée.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <span class="product-emoji">🥤</span>
+          <span class="product-tag">Boisson</span>
+          <h3 class="product-name">Jus Frais du Jour</h3>
+          <p class="product-desc">
+            Des jus 100 % frais pressés au quotidien —
+            l'accompagnement parfait pour sublimer votre tiramisu
+            ou simplement vous désaltérer.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <span class="product-emoji">🍫</span>
+          <span class="product-tag">Intense</span>
+          <h3 class="product-name">Tiramisu Double Cacao</h3>
+          <p class="product-desc">
+            Pour les amateurs de chocolat — une couche
+            généreuse de cacao noir et des éclats de chocolat
+            fondant glissés entre chaque strate.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <span class="product-emoji">🌿</span>
+          <span class="product-tag">Saison</span>
+          <h3 class="product-name">Tiramisu du Moment</h3>
+          <p class="product-desc">
+            Une création surprise qui change chaque semaine
+            selon l'inspiration et les produits du marché local
+            de Nice. Suivez-nous pour ne rien rater !
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CHIFFRES ══════════════ -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div style="text-align:center">
+        <p class="section-label">En chiffres</p>
+        <h2 class="section-title" style="text-align:center">
+          La qualité ne se<br>
+          <em>compte pas</em>, elle se goûte
+        </h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-number">100<span class="value-unit">%</span></div>
+          <div class="value-label">Fait Maison</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">0</div>
+          <div class="value-label">Conservateurs</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">24<span class="value-unit">h</span></div>
+          <div class="value-label">Fraîcheur garantie</div>
+        </div>
+        <div class="value-item">
+          <div class="value-number">∞</div>
+          <div class="value-label">Sourires créés</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ INGRÉDIENTS & PROCESS ══════════════ -->
+  <section id="ingredients">
+    <div class="ingredients-section">
+      <p class="section-label">Transparence totale</p>
+      <h2 class="section-title">
+        Nos ingrédients,<br>
+        <em>sans secret</em>
+      </h2>
+
+      <div class="ingredients-grid">
+        <div>
+          <div class="ingredient-list">
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Mascarpone</span>
+              <span class="ingredient-origin">Italie · Crémeux & onctueux</span>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Espresso</span>
+              <span class="ingredient-origin">Grain sélectionné · Torréfaction artisanale</span>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Biscuits Savoiardi</span>
+              <span class="ingredient-origin">Boudoirs · Légèreté & absorption parfaite</span>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Œufs frais</span>
+              <span class="ingredient-origin">Producteurs locaux · Filière courte</span>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Cacao en poudre</span>
+              <span class="ingredient-origin">Madagascar · Notes intenses & fruitées</span>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-dot"></div>
+              <span class="ingredient-name">Sucre</span>
+              <span class="ingredient-origin">Dosage précis · Équilibre parfait</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--caramel);margin-bottom:32px">Notre processus</p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Préparation du café</strong>
+                <p>On prépare un espresso serré, laissé refroidir puis légèrement sucré pour imbiber délicatement les biscuits.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Crème mascarpone</strong>
+                <p>Le mascarpone est fouetté avec des œufs et du sucre jusqu'à obtenir une texture soyeuse et aérienne.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Montage en pot</strong>
+                <p>Chaque couche est disposée avec soin : biscuits, crème, cacao — l'ordre parfait pour le plaisir en bouche.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <strong>Repos & livraison</strong>
+                <p>Le tiramisu repose quelques heures pour que les saveurs se fondent, puis il file jusqu'à vous, frais et prêt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ CTA FINALE ══════════════ -->
+  <section id="commander" class="cta-section">
+    <div class="cta-inner">
+      <p class="section-label">Prêt à craquer ?</p>
+      <h2 class="cta-title">
+        La vie est trop courte<br>
+        pour un mauvais <em>tiramisu</em>
+      </h2>
+      <p class="cta-body">
+        Commandez votre pot directement sur Instagram ou contactez-nous
+        pour une livraison sur Nice et ses alentours. Chaque tiramisu
+        est préparé à la demande pour vous garantir une fraîcheur absolue.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://instagram.com" class="btn-primary">Nous contacter sur Instagram</a>
+        <a href="tel:" class="btn-outline">Appeler directement</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div>
+      <div class="footer-logo">Nice to <span>Misu</span></div>
+      <div class="footer-tagline">Tiramisu & Juice · Fait Maison · Nice, Côte d'Azur</div>
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com" class="social-link" title="Instagram">📸</a>
+      <a href="https://tiktok.com" class="social-link" title="TikTok">🎵</a>
+    </div>
+    <div class="footer-copy">
+      © 2025 Nice to Misu<br>
+      Tous droits réservés
+    </div>
+  </footer>
+
+</body>
+</html>
